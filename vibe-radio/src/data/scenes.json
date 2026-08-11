@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "truck-wala",
+    "title": "ट्रक वाला",
+    "caption": "क्यों मरते तो बेवफा सनम के लिए, दो गज ज़मीन मिलेगी दफन के लिए।",
+    "bg": "/media/truck-wala.png",
+    "warm": "#C94B2C",
+    "cool": "#274472",
+    "spotifyEmbed": "https://open.spotify.com/embed/track/2A6yzL2EI36gtE5xzeXeIH?utm_source=generator&theme=0",
+    "baseListeners": 687,
+    "statusLabel": "on the highway"
+  },
+  {
+    "slug": "deluxe-saloon",
+    "title": "डीलक्स सैलून",
+    "caption": "मुझसे मोहब्बत का इज़हार करता है, हर कोई अपने अंदाज़ में।",
+    "bg": "/media/truck-wala.png",
+    "warm": "#8C2F2F",
+    "cool": "#1B2A4A",
+    "spotifyEmbed": "https://open.spotify.com/embed/track/2A6yzL2EI36gtE5xzeXeIH?utm_source=generator&theme=0",
+    "baseListeners": 33,
+    "statusLabel": "online"
+  },
+  {
+    "slug": "chai-tapri",
+    "title": "चाय टपरी",
+    "caption": "सुबह की पहली चाय, हर कहानी का आग़ाज़।",
+    "bg": "/media/truck-wala.png",
+    "warm": "#D9772E",
+    "cool": "#2E5339",
+    "spotifyEmbed": "https://open.spotify.com/embed/track/2A6yzL2EI36gtE5xzeXeIH?utm_source=generator&theme=0",
+    "baseListeners": 214,
+    "statusLabel": "brewing"
+  }
+]

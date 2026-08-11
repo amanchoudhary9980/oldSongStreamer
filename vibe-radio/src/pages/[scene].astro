@@ -1,0 +1,29 @@
+---
+import scenes from '../data/scenes.json';
+import SceneStage from '../components/SceneStage.astro';
+import Player from '../components/Player.astro';
+import SceneSwitcher from '../components/SceneSwitcher.astro';
+import '../styles/global.css';
+
+export function getStaticPaths() {
+  return scenes.map((s) => ({
+    params: { scene: s.slug },
+    props: { scene: s }
+  }));
+}
+
+const { scene } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{scene.title} — Vibe Radio</title>
+  </head>
+  <body>
+    <SceneStage scene={scene}>
+      <Player scene={scene} />
+      <SceneSwitcher scenes={scenes} activeSlug={scene.slug} />
+    </SceneStage>
+  </body>
+</html>

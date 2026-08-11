@@ -1,0 +1,13 @@
+---
+const { scenes, activeSlug } = Astro.props;
+---
+<div class="switcher">
+  {scenes.map((s) => (
+    <a
+      href={`/${s.slug}`}
+      class={`switcher__item ${s.slug === activeSlug ? 'switcher__item--active' : ''}`}
+      style={`background-image: url(${s.bg})`}
+      title={s.title}
+    ></a>
+  ))}
+</div>

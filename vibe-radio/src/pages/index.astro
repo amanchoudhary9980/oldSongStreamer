@@ -1,0 +1,5 @@
+---
+import scenes from '../data/scenes.json';
+const defaultScene = scenes[0].slug;
+return Astro.redirect(`/${defaultScene}`);
+---
