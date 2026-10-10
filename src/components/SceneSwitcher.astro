@@ -1,13 +1,34 @@
 ---
 const { scenes, activeSlug } = Astro.props;
+const index = scenes.findIndex((s) => s.slug === activeSlug);
+const prev = scenes[(index - 1 + scenes.length) % scenes.length].slug;
+const next = scenes[(index + 1) % scenes.length].slug;
 ---
-<div class="switcher">
+<nav class="switcher" aria-label="Scenes" data-prev={`/${prev}`} data-next={`/${next}`}>
   {scenes.map((s) => (
     <a
       href={`/${s.slug}`}
-      class={`switcher__item ${s.slug === activeSlug ? 'switcher__item--active' : ''}`}
-      style={`background-image: url(${s.bg})`}
-      title={s.title}
-    ></a>
+      class="chip"
+      aria-current={s.slug === activeSlug ? 'page' : undefined}
+    >
+      <span class="chip__thumb" style={`background-image: url(${s.bg})`} aria-hidden="true"></span>
+      <span class="chip__text">
+        <span class="chip__title">{s.title}</span>
+        <span class="chip__sub">{s.subtitle}</span>
+      </span>
+    </a>
   ))}
-</div>
+</nav>
+
+<script>
+  // ← / → flip between scenes; ignored while typing or inside the player
+  document.addEventListener('keydown', (e) => {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    const nav = document.querySelector<HTMLElement>('.switcher');
+    const href = nav?.dataset[e.key === 'ArrowLeft' ? 'prev' : 'next'];
+    if (!href) return;
+    const link = nav!.querySelector<HTMLAnchorElement>(`a[href="${href}"]`);
+    link?.click();
+  });
+</script>

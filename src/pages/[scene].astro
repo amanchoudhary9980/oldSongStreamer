@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import scenes from '../data/scenes.json';
 import SceneStage from '../components/SceneStage.astro';
 import Player from '../components/Player.astro';
@@ -14,16 +15,25 @@ export function getStaticPaths() {
 
 const { scene } = Astro.props;
 ---
-<html lang="en">
+<html lang="hi">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{scene.title} — Vibe Radio</title>
+    <title>{scene.title} · Vibe Radio</title>
+    <meta name="description" content={`${scene.subtitle}. Kishore Kumar era radio, one scene at a time.`} />
+    <meta name="theme-color" content={scene.tint} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600&family=Rozha+One&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    {scenes.map((s) => s.slug !== scene.slug && <link rel="prefetch" href={s.bg} as="image" />)}
+    <ViewTransitions />
   </head>
   <body>
     <SceneStage scene={scene}>
-      <Player scene={scene} />
-      <SceneSwitcher scenes={scenes} activeSlug={scene.slug} />
+      <div class="dock glass" transition:name="dock">
+        <Player scene={scene} />
+        <SceneSwitcher scenes={scenes} activeSlug={scene.slug} />
+      </div>
     </SceneStage>
   </body>
 </html>

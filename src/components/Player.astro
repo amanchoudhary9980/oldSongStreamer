@@ -1,27 +1,18 @@
 ---
+import stations from '../data/station.json';
 const { scene } = Astro.props;
+const station = stations.find((s) => s.id === scene.station) ?? stations[0];
 ---
-<div class="player">
+<!-- each scene plays the station that fits its vibe; scenes on the same station keep the
+     same player element, so the music carries on when you switch between them -->
+<div class="player" transition:persist={`player-${station.id}`}>
   <iframe
-    style="border-radius:16px"
-    src={scene.spotifyEmbed}
+    title={`Spotify player: ${station.label}`}
+    src={`https://open.spotify.com/embed/playlist/${station.playlist}?utm_source=generator&theme=0`}
     width="100%"
     height="152"
     frameborder="0"
-    allowfullscreen
     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
     loading="lazy">
   </iframe>
 </div>
-
-<style>
-  .player {
-    position: absolute;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(92%, 420px);
-    z-index: 6;
-    filter: drop-shadow(0 12px 30px rgba(0,0,0,0.45));
-  }
-</style>

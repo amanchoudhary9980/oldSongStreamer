@@ -2,34 +2,65 @@
   {
     "slug": "truck-wala",
     "title": "ट्रक वाला",
+    "subtitle": "Highway, golden hour",
     "caption": "क्यों मरते तो बेवफा सनम के लिए, दो गज ज़मीन मिलेगी दफन के लिए।",
-    "bg": "/media/truck-wala.png",
-    "warm": "#C94B2C",
-    "cool": "#274472",
-    "spotifyEmbed": "https://open.spotify.com/embed/track/2A6yzL2EI36gtE5xzeXeIH?utm_source=generator&theme=0",
+    "bg": "/media/truck-wala.webp",
+    "focus": "35% 60%",
+    "tint": "#C94B2C",
+    "station": "old-is-gold",
     "baseListeners": 687,
-    "statusLabel": "on the highway"
+    "statusLabel": "on the highway",
+    "credit": {
+      "label": "Art: Aman Choudhary",
+      "url": "https://www.behance.net/design-aman"
+    }
   },
   {
-    "slug": "deluxe-saloon",
-    "title": "डीलक्स सैलून",
+    "slug": "barsaat",
+    "title": "बरसात",
+    "subtitle": "Monsoon ride for two",
+    "caption": "भीगी सड़क, एक छतरी, और पीछे से आती पुरानी धुन।",
+    "bg": "/media/barsaat.webp",
+    "focus": "40% 50%",
+    "tint": "#6B3FA0",
+    "station": "old-is-gold",
+    "baseListeners": 412,
+    "statusLabel": "in the rain",
+    "credit": {
+      "label": "Art: Freepik",
+      "url": "https://www.freepik.com/free-vector/gradient-monsoon-season-illustration-with-people-traffic-scooter_27999669.htm"
+    }
+  },
+  {
+    "slug": "bambai",
+    "title": "बम्बई की सड़क",
+    "subtitle": "Bus, bicycle, ice cream cart",
+    "caption": "शहर की भीड़ में भी एक गाना अपना सा लगता है।",
+    "bg": "/media/bambai.webp",
+    "focus": "50% 55%",
+    "tint": "#B8322A",
+    "station": "90s",
+    "baseListeners": 263,
+    "statusLabel": "on the street",
+    "credit": {
+      "label": "Art: Freepik",
+      "url": "https://www.freepik.com/free-vector/hand-drawn-india-lifestyle-illustration_31752223.htm"
+    }
+  },
+  {
+    "slug": "bazaar",
+    "title": "बाज़ार",
+    "subtitle": "Saturday market",
     "caption": "मुझसे मोहब्बत का इज़हार करता है, हर कोई अपने अंदाज़ में।",
-    "bg": "/media/truck-wala.png",
-    "warm": "#8C2F2F",
-    "cool": "#1B2A4A",
-    "spotifyEmbed": "https://open.spotify.com/embed/track/2A6yzL2EI36gtE5xzeXeIH?utm_source=generator&theme=0",
-    "baseListeners": 33,
-    "statusLabel": "online"
-  },
-  {
-    "slug": "chai-tapri",
-    "title": "चाय टपरी",
-    "caption": "सुबह की पहली चाय, हर कहानी का आग़ाज़।",
-    "bg": "/media/truck-wala.png",
-    "warm": "#D9772E",
-    "cool": "#2E5339",
-    "spotifyEmbed": "https://open.spotify.com/embed/track/2A6yzL2EI36gtE5xzeXeIH?utm_source=generator&theme=0",
-    "baseListeners": 214,
-    "statusLabel": "brewing"
+    "bg": "/media/bazaar.webp",
+    "focus": "50% 45%",
+    "tint": "#D9772E",
+    "station": "90s",
+    "baseListeners": 198,
+    "statusLabel": "shopping",
+    "credit": {
+      "label": "Art: Freepik",
+      "url": "https://www.freepik.com/free-vector/flat-design-indian-lifestyle-illustration_31590542.htm"
+    }
   }
 ]
