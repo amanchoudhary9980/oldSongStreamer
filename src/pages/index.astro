@@ -1,5 +1,18 @@
 ---
+// fallback for hosts without public/_redirects: jump to the first scene at once
 import scenes from '../data/scenes.json';
-const defaultScene = scenes[0].slug;
-return Astro.redirect(`/${defaultScene}`);
+const target = `/${scenes[0].slug}/`;
 ---
+<!doctype html>
+<html lang="hi">
+  <head>
+    <meta charset="utf-8" />
+    <title>Vibe Radio</title>
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <link rel="canonical" href={target} />
+    <script is:inline define:vars={{ target }}>location.replace(target);</script>
+  </head>
+  <body style="background:#140c10">
+    <a href={target} style="color:#fff8ec">Vibe Radio</a>
+  </body>
+</html>

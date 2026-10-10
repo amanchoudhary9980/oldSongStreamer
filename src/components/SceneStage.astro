@@ -1,18 +1,20 @@
 ---
 import stations from '../data/station.json';
 import DevTag from './DevTag.astro';
+import SceneFx from './SceneFx.astro';
 const { scene } = Astro.props;
 ---
 <main class="stage" style={`--tint:${scene.tint}; --focus:${scene.focus};`}>
   <div class="stage__art" transition:name="art" transition:animate="fade">
     <img class="stage__bg" src={scene.bg} alt="" />
   </div>
+  <SceneFx fx={scene.fx} />
   <div class="stage__tint" aria-hidden="true"></div>
   <div class="stage__grain" aria-hidden="true"></div>
   <div class="stage__vignette" aria-hidden="true"></div>
 
   <header class="topbar">
-    <a class="brand glass" href="/" aria-label="Vibe Radio home">
+    <a class="brand glass" href="/truck-wala/" aria-label="Vibe Radio home">
       <span class="brand__dot" aria-hidden="true"></span>
       <span class="brand__name">Vibe Radio</span>
       <span class="brand__era">Kishore era</span>
@@ -30,7 +32,8 @@ const { scene } = Astro.props;
     <h1 class="card__title">{scene.title}</h1>
     <p class="card__caption">{scene.caption}</p>
     <p class="card__meta">
-      <span>Now spinning: {(stations.find((s) => s.id === scene.station) ?? stations[0]).label}</span>
+      <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="card__spinning">Now spinning: {(stations.find((s) => s.id === scene.station) ?? stations[0]).label}</span>
       <a href={scene.credit.url} target="_blank" rel="noopener">{scene.credit.label}</a>
     </p>
   </section>

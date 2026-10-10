@@ -70,6 +70,17 @@ a { color: inherit; }
   inset: 0;
   overflow: hidden;
   z-index: 0;
+  transform: translate3d(calc(var(--px, 0) * -18px), calc(var(--py, 0) * -12px), 0) scale(1.03);
+  transition: transform 1.2s cubic-bezier(.2, .7, .2, 1);
+}
+
+.stage__fx {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* the loop: a slow Ken Burns drift, back and forth */
@@ -234,7 +245,7 @@ a { color: inherit; }
   font-weight: 400;
   font-size: clamp(48px, 7.5vw, 104px);
   line-height: 1.05;
-  text-shadow: 0 4px 24px rgba(10, 4, 8, 0.45);
+  filter: drop-shadow(0 4px 18px rgba(10, 4, 8, 0.45));
 }
 
 .card__caption {
@@ -256,7 +267,39 @@ a { color: inherit; }
   color: var(--ink-soft);
 }
 
+.card__meta { align-items: center; column-gap: 0; }
+.card__meta a { margin-left: 16px; }
+.card__spinning { margin-right: auto; }
 .card__meta a { text-underline-offset: 3px; }
+
+/* little equalizer next to "Now spinning" */
+.eq { display: inline-flex; align-items: flex-end; gap: 3px; height: 14px; margin-right: 8px; }
+.eq i { width: 3px; height: 100%; border-radius: 2px; background: var(--live); transform-origin: bottom; animation: eq 1s ease-in-out infinite; }
+.eq i:nth-child(2) { animation-delay: -0.35s; animation-duration: 0.8s; }
+.eq i:nth-child(3) { animation-delay: -0.6s; animation-duration: 1.2s; }
+.eq i:nth-child(4) { animation-delay: -0.15s; animation-duration: 0.9s; }
+@keyframes eq { 0%, 100% { transform: scaleY(0.25); } 50% { transform: scaleY(1); } }
+
+/* entrances: card rises in, its lines and the scene chips follow one after another */
+.card { animation: rise 0.8s cubic-bezier(.2, .7, .2, 1) both; }
+.card > * { animation: rise 0.7s cubic-bezier(.2, .7, .2, 1) both; }
+.card > :nth-child(1) { animation-delay: 0.10s; }
+.card > :nth-child(2) { animation-delay: 0.18s; }
+.card > :nth-child(3) { animation-delay: 0.28s; }
+.card > :nth-child(4) { animation-delay: 0.38s; }
+.topbar > * { animation: drop 0.7s cubic-bezier(.2, .7, .2, 1) both; }
+.topbar > :nth-child(2) { animation-delay: 0.08s; }
+.topbar > :nth-child(3) { animation-delay: 0.16s; }
+.dock { animation: rise 0.8s 0.1s cubic-bezier(.2, .7, .2, 1) both; }
+.chip { animation: rise 0.6s cubic-bezier(.2, .7, .2, 1) both; }
+.chip:nth-child(1) { animation-delay: 0.25s; }
+.chip:nth-child(2) { animation-delay: 0.32s; }
+.chip:nth-child(3) { animation-delay: 0.39s; }
+.chip:nth-child(4) { animation-delay: 0.46s; }
+.card__title { background: linear-gradient(100deg, var(--ink) 40%, #ffd9a0 50%, var(--ink) 60%) 0 0 / 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: rise 0.7s 0.18s cubic-bezier(.2, .7, .2, 1) both, shine 7s 1.2s ease-in-out infinite; }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes drop { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: none; } }
+@keyframes shine { 0%, 70% { background-position: 100% 0; } 100% { background-position: 0 0; } }
 .card__meta a:hover { color: var(--ink); }
 
 /* ---------- dock: player + scene switcher ---------- */
@@ -341,6 +384,8 @@ a { color: inherit; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .stage__bg, .brand__dot, .status__dot { animation: none; }
+  .stage__bg, .brand__dot, .status__dot, .eq i, .card, .card > *, .card__title,
+  .topbar > *, .dock, .chip { animation: none; }
+  .stage__art { transform: none; transition: none; }
   .chip:hover { transform: none; }
 }
